@@ -11,9 +11,17 @@ jobs:
     vmImage: 'Ubuntu-16.04'
   strategy:
     matrix:
+      Python27:
+        python.version: '2.7'
+      Python34:
+        python.version: '3.4'
+      Python35:
+        python.version: '3.5'
+      Python36:
+        python.version: '3.6'
       Python37:
         python.version: '3.7'
-    maxParallel: 1
+    maxParallel: 5
 
   steps:
   - task: UsePythonVersion@0
@@ -48,8 +56,8 @@ jobs:
   - script: pytest examples/my_first_test.py --browser=chrome --headless -v -s --junit-xml=junit/test-results.xml
     displayName: 'Run pytest my_first_test.py --browser=chrome --headless'
 
-  - script: pytest examples/loadtestwebsitemultithread500.py --browser=chrome --headless -s -n 500 --junit-xml=junit/test-results.xml
-    displayName: 'Run pytest loadtestwebsitemultithread500.py -s -n 500 --browser=chrome --headless'
+  - script: pytest examples/loadtestwebsitemultithread250.py --browser=chrome --headless -s -n 250 --junit-xml=junit/test-results.xml
+    displayName: 'Run pytest loadtestwebsitemultithread250.py -s -n 250 --browser=chrome --headless'
 
   - task: PublishTestResults@2
     inputs:
