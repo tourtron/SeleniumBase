@@ -54,8 +54,8 @@ jobs:
   - script: pytest examples/my_first_test.py --browser=chrome --headless -v -s --junit-xml=junit/test-results.xml
     displayName: 'Run pytest my_first_test.py --browser=chrome --headless'
 
-  - script: pytest examples/loadtestwebsitemultithread2.py --browser=chrome --headless -v -s -n 8 --junit-xml=junit/test-results.xml
-    displayName: 'Run pytest loadtestwebsitemultithread2.py --browser=chrome --headless'
+  - script: pytest examples/loadtestwebsitemultithread100.py --browser=chrome --headless -v -s -n 8 --junit-xml=junit/test-results.xml
+    displayName: 'Run pytest loadtestwebsitemultithread100.py -s -n 100 --browser=chrome --headless'
 
   - task: PublishTestResults@2
     inputs:
